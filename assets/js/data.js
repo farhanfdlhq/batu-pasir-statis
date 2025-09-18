@@ -9,8 +9,8 @@ const PRODUCTS = [
     description:
       "Tanah berkualitas untuk keperluan pengurukan, peninggian lahan, dan dasar konstruksi.",
     unit: "m³ / rit",
-    image: "assets/images/tanah-uruk.png",
-    gallery: ["assets/images/tanah-uruk.png"],
+    image: "assets/images/tanah-uruk.webp",
+    gallery: ["assets/images/tanah-uruk.webp"],
     specifications: {
       Asal: "Galian Proyek",
       Warna: "Kuning",
@@ -24,8 +24,8 @@ const PRODUCTS = [
     description:
       "Lapisan tanah atas yang subur, kaya akan bahan organik, sangat baik untuk keperluan taman dan lansekap.",
     unit: "m³ / rit",
-    image: "assets/images/tanah-topsoil.png",
-    gallery: ["assets/images/tanah-topsoil.png"],
+    image: "assets/images/tanah-topsoil.webp",
+    gallery: ["assets/images/tanah-topsoil.webp"],
     specifications: {
       Warna: "Coklat Kehitaman",
       Struktur: "Gembur",
@@ -41,8 +41,8 @@ const PRODUCTS = [
     description:
       "Pasir gunung dengan warna kekuningan, cocok untuk adukan plesteran dan pemasangan bata.",
     unit: "m³ / rit",
-    image: "assets/images/pasirgunungkuning.png",
-    gallery: ["assets/images/pasirgunungkuning.png"],
+    image: "assets/images/pasirgunungkuning.webp",
+    gallery: ["assets/images/pasirgunungkuning.webp"],
     specifications: {
       Asal: "Gunung Pasir",
       "Kadar Lumpur": "< 5%",
@@ -56,8 +56,8 @@ const PRODUCTS = [
     description:
       "Pasir gunung dengan warna kemerahan, memiliki karakteristik yang baik untuk berbagai keperluan konstruksi.",
     unit: "m³ / rit",
-    image: "assets/images/pasirgunungmerah.png",
-    gallery: ["assets/images/pasirgunungmerah.png"],
+    image: "assets/images/pasirgunungmerah.webp",
+    gallery: ["assets/images/pasirgunungmerah.webp"],
     specifications: {
       Asal: "Gunung Pasir",
       "Kadar Lumpur": "< 5%",
@@ -71,8 +71,8 @@ const PRODUCTS = [
     description:
       "Pasir dengan butiran kasar dan tajam, sangat baik untuk campuran beton struktural.",
     unit: "m³ / rit",
-    image: "assets/images/pasirbeton.png",
-    gallery: ["assets/images/pasirbeton.png"],
+    image: "assets/images/pasirbeton.webp",
+    gallery: ["assets/images/pasirbeton.webp"],
     specifications: {
       Asal: "Palu",
       "Kadar Lumpur": "< 3%",
@@ -88,8 +88,8 @@ const PRODUCTS = [
     description:
       "Batu belah untuk keperluan utama pondasi bangunan. Sangat kuat, kokoh, dan tahan lama.",
     unit: "m³ / rit",
-    image: "assets/images/batupondasi.png",
-    gallery: ["assets/images/batupondasi.png"],
+    image: "assets/images/batupondasi.webp",
+    gallery: ["assets/images/batupondasi.webp"],
     specifications: {
       Ukuran: "10-30 cm (Bervariasi)",
       Warna: "Abu-abu kehitaman",
@@ -103,8 +103,8 @@ const PRODUCTS = [
     description:
       "Batu alam dari sungai dengan permukaan yang lebih halus, biasa digunakan untuk pondasi, dinding, dan elemen dekoratif.",
     unit: "m³ / rit",
-    image: "assets/images/batukali.png",
-    gallery: ["assets/images/batukali.png"],
+    image: "assets/images/batukali.webp",
+    gallery: ["assets/images/batukali.webp"],
     specifications: {
       Bentuk: "Bulat / Lonjong (Alami)",
       Warna: "Abu-abu natural",
@@ -118,8 +118,8 @@ const PRODUCTS = [
     description:
       "Batu pecah berbagai ukuran (1/2, 2/3, 3/5) untuk campuran beton cor, jalan, dan proyek infrastruktur lainnya.",
     unit: "m³ / rit",
-    image: "assets/images/Batu-Split.png",
-    gallery: ["assets/images/Batu-Split.png"],
+    image: "assets/images/Batu-Split.webp",
+    gallery: ["assets/images/Batu-Split.webp"],
     specifications: {
       Ukuran: "1/2, 2/3, 3/5",
       Bentuk: "Kubikal, Bersudut",
@@ -133,8 +133,8 @@ const PRODUCTS = [
     description:
       "Agregat batu berwarna kemerahan yang dipadatkan, khusus digunakan sebagai lapisan dasar untuk pembuatan jalan.",
     unit: "m³ / rit",
-    image: "assets/images/batumerah.png",
-    gallery: ["assets/images/batumerah.png"],
+    image: "assets/images/batumerah.webp",
+    gallery: ["assets/images/batumerah.webp"],
     specifications: {
       Fungsi: "Dasar perkerasan jalan",
       Warna: "Merah Kecoklatan",
@@ -148,8 +148,8 @@ const PRODUCTS = [
     description:
       "Batu koral hias untuk lantai carport, taman, dan area outdoor. Memberikan tampilan alami dan anti-slip.",
     unit: "karung",
-    image: "assets/images/Batu-Koral-Sikat.png",
-    gallery: ["assets/images/Batu-Koral-Sikat.png"],
+    image: "assets/images/Batu-Koral-Sikat.webp",
+    gallery: ["assets/images/Batu-Koral-Sikat.webp"],
     specifications: {
       Warna: "Pancawarna",
       Ukuran: "1-2 cm (Bervariasi)",
@@ -165,8 +165,8 @@ const PRODUCTS = [
     description:
       "Bata merah press berkualitas tinggi, padat, dan presisi. Cocok untuk dinding bangunan yang kokoh dan rapi.",
     unit: "pcs",
-    image: "assets/images/Batu-Bata-Merah.png",
-    gallery: ["assets/images/Batu-Bata-Merah.png"],
+    image: "assets/images/Batu-Bata-Merah.webp",
+    gallery: ["assets/images/Batu-Bata-Merah.webp"],
     specifications: {
       Jenis: "Press Mesin",
       Ukuran: "20 x 10 x 5 cm",
@@ -180,8 +180,8 @@ const PRODUCTS = [
     description:
       "Bata ringan aerasi (AAC) yang presisi, ringan, dan memiliki kemampuan insulasi termal dan suara yang baik.",
     unit: "m³",
-    image: "assets/images/bataputih.png",
-    gallery: ["assets/images/bataputih.png"],
+    image: "assets/images/bataputih.webp",
+    gallery: ["assets/images/bataputih.webp"],
     specifications: {
       Jenis: "Autoclaved Aerated Concrete (AAC)",
       Warna: "Putih",
@@ -197,8 +197,8 @@ const PRODUCTS = [
     description:
       "Menyediakan jasa penyewaan berbagai jenis excavator untuk keperluan proyek konstruksi, galian, dan pengerukan.",
     unit: "jam / hari",
-    image: "assets/images/sewaexcavator.png",
-    gallery: ["assets/images/sewaexcavator.png"],
+    image: "assets/images/sewaexcavator.webp",
+    gallery: ["assets/images/sewaexcavator.webp"],
     specifications: {
       Tipe: "Standard, Long Arm, Breaker",
       Kapasitas: "Berbagai kelas (PC75, PC200, dll)",
@@ -212,8 +212,8 @@ const PRODUCTS = [
     description:
       "Jasa angkutan alat berat dan kendaraan menggunakan truk towing (derek) atau self loader.",
     unit: "per ritase",
-    image: "assets/images/sewatowing.png",
-    gallery: ["assets/images/sewatowing.png"],
+    image: "assets/images/sewatowing.webp",
+    gallery: ["assets/images/sewatowing.webp"],
     specifications: {
       Jenis: "Towing Gendong, Self Loader",
       Kapasitas: "Disesuaikan dengan beban",
