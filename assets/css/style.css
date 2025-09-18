@@ -2,8 +2,8 @@
 
 /* --- Variabel Warna & Tema --- */
 :root {
-  --primary-color: #f97316;
-  --primary-dark-color: #ea580c;
+  --primary-color: #e53935;
+  --primary-dark-color: #e53935;
   --secondary-color: #1e293b;
   --secondary-light-color: #334155;
   --accent-color: #facc15;
@@ -50,7 +50,7 @@ header {
   min-height: 5rem; /* 80px */
 }
 .navbar-brand {
-  color: white !important;
+  color: var(--primary-color) !important;
   font-weight: 700;
   font-size: 1.125rem;
   display: flex;

@@ -46,6 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function createProductCardHTML(product) {
+    const phoneNumber = "6281253872108";
+    const message = encodeURIComponent(
+      `Halo, saya tertarik dengan produk "${product.name}". Apakah masih tersedia?`
+    );
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+
     return `
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="card h-100 product-card">
@@ -54,19 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
                             <img src="${product.image}" class="card-img-top" alt="${product.name}">
                         </a>
                     </div>
-                    <div class="card-body d-flex flex-column">
+                    <div class="card-body d-flex flex-column pb-3">
                         <span class="badge align-self-start mb-2">${product.category}</span>
                         <h5 class="card-title fw-bold">
                             <a href="product-detail.html?id=${product.id}" class="text-decoration-none stretched-link">${product.name}</a>
                         </h5>
                         <p class="card-text small text-muted flex-grow-1">${product.description}</p>
-                         <div class="mt-auto d-flex justify-content-between align-items-center">
-                            <span class="text-primary fw-bold">Kontak untuk Info</span>
-                            <span class="text-muted small">Unit: ${product.unit}</span>
-                        </div>
                     </div>
                     <div class="card-footer">
-                        <a href="product-detail.html?id=${product.id}" class="btn btn-primary w-100">Lihat Detail</a>
+                        <a href="${whatsappURL}" class="btn btn-primary w-100 fw-bold d-flex align-items-center justify-content-center gap-2" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                            Pesan Lewat WA
+                        </a>
                     </div>
                 </div>
             </div>
@@ -83,12 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function setupCatalogPage() {
     const productListContainer = document.getElementById("product-list");
     if (!productListContainer) return;
-
     const categoryFiltersContainer =
       document.getElementById("category-filters");
     const searchInput = document.getElementById("search-input");
     const noResultsDiv = document.getElementById("no-results");
-
     const categories = ["All", ...new Set(PRODUCTS.map((p) => p.category))];
     categoryFiltersContainer.innerHTML = categories
       .map(
@@ -98,14 +101,12 @@ document.addEventListener("DOMContentLoaded", function () {
           }" data-category="${cat}">${cat}</button>`
       )
       .join("");
-
     const renderProducts = (products) => {
       noResultsDiv.style.display = products.length === 0 ? "block" : "none";
       productListContainer.innerHTML = products
         .map(createProductCardHTML)
         .join("");
     };
-
     const filterProducts = () => {
       const searchTerm = searchInput.value.toLowerCase();
       const activeCategory = document.querySelector(
@@ -118,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       renderProducts(filtered);
     };
-
     categoryFiltersContainer.addEventListener("click", (e) => {
       if (e.target.classList.contains("category-filter")) {
         document
@@ -128,12 +128,11 @@ document.addEventListener("DOMContentLoaded", function () {
         filterProducts();
       }
     });
-
     searchInput.addEventListener("input", filterProducts);
     renderProducts(PRODUCTS);
   }
 
-  // FUNGSI INI DIPERBARUI TOTAL
+  // --- FUNGSI INI YANG AKAN DIUBAH ---
   function setupProductDetailPage() {
     const container = document.getElementById("product-detail-container");
     if (!container) return;
@@ -141,11 +140,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
     const productId = params.get("id");
     const product = PRODUCTS.find((p) => p.id === productId);
-
     const placeholder = document.getElementById("product-placeholder");
 
     if (product) {
       document.title = `${product.name} - Batu Pasir Jaya`;
+
+      const phoneNumber = "6281253872108";
+      const message = encodeURIComponent(
+        `Halo, saya tertarik dengan produk "${product.name}". Mohon info lebih lanjut.`
+      );
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
       let specsHTML = Object.entries(product.specifications)
         .map(
@@ -175,48 +179,35 @@ document.addEventListener("DOMContentLoaded", function () {
       container.innerHTML = `
                 <div class="row g-5">
                     <div class="col-lg-6">
-                        <div class="mb-3">
-                            <img src="${product.image}" alt="${
-        product.name
-      }" id="main-product-image" class="img-fluid rounded shadow-sm w-100" style="aspect-ratio: 4/3; object-fit: cover;">
-                        </div>
+                        <div class="mb-3"><img src="${product.image}" alt="${product.name}" id="main-product-image" class="img-fluid rounded shadow-sm w-100" style="aspect-ratio: 4/3; object-fit: cover;"></div>
                         <div class="row g-2 row-cols-4" id="gallery-container">${galleryHTML}</div>
                     </div>
                     <div class="col-lg-6">
-                        <span class="badge bg-primary-subtle text-primary-dark mb-2">${
-                          product.category
-                        }</span>
+                        <span class="badge bg-primary-subtle text-primary-dark mb-2">${product.category}</span>
                         <h1 class="display-6 fw-bolder">${product.name}</h1>
                         <p class="lead text-muted">${product.description}</p>
                         <div class="mt-4">
                             <h3 class="h5 fw-bold">Spesifikasi</h3>
                             <ul class="list-group list-group-flush">${specsHTML}</ul>
                         </div>
-                        <div class="mt-4 p-4 rounded-3 section-subtle">
-                            <h3 class="h5 fw-bold mb-3">Minta Penawaran Cepat</h3>
-                            <p class="small text-muted">Isi formulir di halaman kontak kami untuk penawaran lengkap.</p>
-                            <a href="contact.html?product=${encodeURIComponent(
-                              product.name
-                            )}" class="btn btn-primary w-100 mt-3">Lanjut ke Halaman Kontak</a>
+                        <div class="mt-4 d-grid">
+                            <a href="${whatsappURL}" class="btn btn-primary btn-lg fw-bold d-flex align-items-center justify-content-center gap-2" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                                Pesan Langsung via WA
+                            </a>
                         </div>
                     </div>
                 </div>`;
 
-      // Logika baru untuk galeri interaktif
       const galleryContainer = document.getElementById("gallery-container");
       const mainImage = document.getElementById("main-product-image");
       if (galleryContainer && mainImage) {
         galleryContainer.addEventListener("click", (e) => {
           if (e.target.classList.contains("gallery-thumbnail")) {
-            // Ganti gambar utama
             mainImage.src = e.target.src;
-
-            // Hapus kelas 'active' dari semua thumbnail
             document
               .querySelectorAll(".gallery-thumbnail")
               .forEach((thumb) => thumb.classList.remove("active"));
-
-            // Tambahkan kelas 'active' ke thumbnail yang diklik
             e.target.classList.add("active");
           }
         });
