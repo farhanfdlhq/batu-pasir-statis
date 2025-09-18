@@ -29,11 +29,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function setActiveNavLink() {
     const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
-    const currentPath =
-      window.location.pathname.split("/").pop() || "index.html";
+    const currentPath = window.location.pathname;
+
     navLinks.forEach((link) => {
-      const linkPath = link.getAttribute("href").split("/").pop();
-      if (linkPath === currentPath) {
+      const linkPath = link.getAttribute("href");
+
+      // Menghapus ".html" dari path link jika ada (untuk kompatibilitas lokal)
+      const cleanedLinkPath = linkPath.replace(/\.html$/, "");
+
+      // Menghapus ".html" dari path saat ini jika ada
+      const cleanedCurrentPath = currentPath.replace(/\.html$/, "");
+
+      // Kondisi untuk halaman utama
+      if (
+        linkPath === "/" &&
+        (cleanedCurrentPath === "/" || cleanedCurrentPath === "/index")
+      ) {
+        link.classList.add("active");
+        return;
+      }
+
+      // Kondisi untuk halaman lainnya (pastikan linkPath tidak hanya "/")
+      if (linkPath !== "/" && cleanedCurrentPath.endsWith(cleanedLinkPath)) {
         link.classList.add("active");
       }
     });
